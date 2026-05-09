@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ title }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="userForm">
+        <div class="col mb-3">
+            <app-input-field label="Person Name" controlName="personName" inputType="text"></app-input-field>
+            <!-- <label for="personName" class="form-label">Person Name</label>
+      <input id="personName" name="personName" formControlName="personName" class="form-control" required /> -->
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <!-- <app-dropdown-field label="User Type" controlName="usertype" [options]="userTypeList"></app-dropdown-field> -->
+                <label for="userType" class="form-label">User Type</label>
+                <select id="userType" name="userType" formControlName="userType" class="form-select" required>
+                    <option value="">Select Type</option>
+                    @for (ut of userTypeList; track $index) {
+                    <option [ngValue]="ut.value">
+                        {{ ut.label }}
+                    </option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <app-input-field label="Contact Number" controlName="contactNo" inputType="text"></app-input-field>
+            <!-- <label for="contactNo" class="form-label">Contact Number</label> -->
+            <!-- <input id="contactNo" name="contactNo" formControlName="contactNo" class="form-control" required /> -->
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <app-input-field label="User Name" controlName="username" inputType="text"></app-input-field>
+            </div>
+            <div class="col mb-3">
+                <app-input-field label="Password" controlName="password" inputType="text"></app-input-field>
+                <!-- <label for="password" class="form-label">Password</label>
+        <input id="password" name="password" formControlName="password" class="form-control" required /> -->
+            </div>
+        </div>
+            <!-- <div class="col mb-3">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>User Type</mat-label>
+          <mat-select formControlName="userTypeId" required>
+            <mat-option value="">Select Company</mat-option>
+            @for (ut of userTypeList; track $index){
+            <mat-option [value]="ut.value">
+              {{ ut.label }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+        <!-- <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" formControlName="allowLogin" />
+            <label class="form-check-label" for="rememberMe">Allow Login</label>
+        </div> -->
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-secondary" (click)="close()">Cancel</button>
+    <button class="btn btn-primary" (click)="saveData()">{{ button }}</button>
+</div>

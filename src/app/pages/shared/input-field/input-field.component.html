@@ -1,0 +1,37 @@
+<!-- <div class="mb-3"> -->
+    <label [for]="controlName" class="form-label">{{ label }}
+        @if(formControl.errors?.['required']){
+            <span class="text-danger">*</span>
+        }
+    </label>
+    <input 
+        [id]="controlName" 
+        [formControl]="formControl" 
+        [placeholder]="label" 
+        [type]="inputType"
+        class="form-control" 
+        [class.is-invalid]="formControl.invalid && (formControl.dirty || formControl.touched)"
+        [class.is-valid]="formControl.valid && (formControl.dirty || formControl.touched)"
+        />
+    @if(formControl.invalid && (formControl.dirty || formControl.touched)){
+        <div class="text-danger mb-0">
+            <!-- Simple validation messages -->
+            @if(formControl.errors?.['required']){
+            <p>This field is required.</p>
+            }
+            @else if(formControl.errors?.['pattern']){
+            <p>The format is invalid.</p>
+            }
+            @else if (formControl.errors?.['minlength']){
+            <p>This field is required at least {{formControl.errors?.['minlength'].requiredLength}} characters.</p>
+            }
+            @else if(formControl.errors?.['maxlength']){
+            <p>This field is required upto {{formControl.errors?.['maxlength'].requiredLength}} characters.</p>
+            }
+            @else if(formControl.errors?.['email']){
+            <p>Please enter valid Email</p>
+            }
+            <!-- <div *ngIf="formControl.errors?.['required']">This field is required.</div> -->
+        </div>
+    }
+<!-- </div> -->
